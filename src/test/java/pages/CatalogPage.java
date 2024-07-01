@@ -1,25 +1,23 @@
-package Pages;
+package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-
-public class CatalogPage extends Filter {
+public class CatalogPage extends BasePage {
     @FindBy(css = "div.catalog-form__description>[href$='prices']" )
     private ElementsCollection allPrices;
-    @FindBy(css = ".catalog-form__offers-list>[class$='primary']:first-child [class$='image']")
-    private SelenideElement firstProductInCatalog;
-    @FindBy(css = "div.b-top-actions")
-    private Head head;
-    @FindBy(css = ".catalog-form__filter-part.catalog-form__filter-part_1.js-container")
+    @FindBy(css = "div.catalog-form__offers-list>[class$='primary'] [class$='image']")
+    private ElementsCollection productInCatalog;
+    @FindBy(css = "div.catalog-form__filter-part.catalog-form__filter-part_1.js-container")
     private Filter filter;
+
+    public Filter getFilter() {
+        return filter;
+    }
 
     public boolean priceCheck(int maxPrice) {
         boolean priceCorrespondsParameters = true;
@@ -44,6 +42,6 @@ public class CatalogPage extends Filter {
     }
 
     public void goToFirstProductPage() {
-        firstProductInCatalog.click();
+        productInCatalog.get(0).click();
     }
 }
