@@ -1,11 +1,12 @@
-package Pages;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Container;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Filter extends Head implements Container{
+public class Filter implements Container{
     @FindBy(css = "[placeholder='до']")
     private SelenideElement priceUpto;
     @FindBy(css = ".catalog-interaction__state.catalog-interaction__state_initial" +
@@ -15,10 +16,11 @@ public class Filter extends Head implements Container{
     private Head head;
 
     public void enterPriceUpTo(String price) {
-        priceUpto.sendKeys(price);
+        priceUpto.setValue(price);
     }
 
-    public void waitForProductDisplay() {
+    public void waitForFilterToApply() {
         numberGoods.shouldBe(Condition.visible);
+        Selenide.sleep(400);
     }
 }

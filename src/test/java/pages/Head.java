@@ -1,6 +1,7 @@
-package Pages;
+package pages;
 
 import com.codeborne.selenide.Container;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,15 +12,9 @@ public class Head implements Container {
     private SelenideElement numberItemsInCart;
     @FindBy(css = ".fast-search__input")
     private SelenideElement searchString;
-    @FindBy(css = ".search__result:first-child")
-    private SelenideElement firstProductFromSearchBarList;
 
     public void enterProductName(String productName) {
-        searchString.sendKeys(productName);
-    }
-
-    public void comparesProductNameWithFirstOneInList(String productName) {
-        firstProductFromSearchBarList.shouldHave(text(productName));
+        searchString.setValue(productName);
     }
 
     public void checkNumberItemsInCart(String expectedQuantityOfGoods) {
