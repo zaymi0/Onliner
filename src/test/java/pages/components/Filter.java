@@ -1,26 +1,22 @@
-package pages;
+package pages.components;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Container;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import pages.CatalogPage;
 
 public class Filter implements Container{
     @FindBy(css = "[placeholder='до']")
-    private SelenideElement priceUpto;
+    private SelenideElement priceUpTo;
     @FindBy(css = ".catalog-interaction__state.catalog-interaction__state_initial" +
             ".catalog-interaction__state_disabled.catalog-interaction__state_control")
     private SelenideElement numberGoods;
-    @FindBy(css = "div.b-top-actions")
-    private Head head;
-
-    public void enterPriceUpTo(String price) {
-        priceUpto.setValue(price);
-    }
-
-    public void waitForFilterToApply() {
+    public CatalogPage enterPriceUpTo(String price) {
+        priceUpTo.setValue(price);
         numberGoods.shouldBe(Condition.visible);
-        Selenide.sleep(400);
+        Selenide.sleep(1000);
+        return Selenide.page(CatalogPage.class);
     }
 }

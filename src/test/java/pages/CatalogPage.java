@@ -1,7 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.Selenide;
+import pages.components.Filter;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -41,7 +42,8 @@ public class CatalogPage extends BasePage {
         return priceCorrespondsParameters;
     }
 
-    public void goToFirstProductPage() {
+    public ProductPage goToFirstProductPage() {
         productInCatalog.get(0).click();
+        return Selenide.page(ProductPage.class);
     }
 }
