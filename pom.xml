@@ -23,16 +23,6 @@
         <allure.version>2.27.0</allure.version>
         <selenide.version>7.2.3</selenide.version>
     </properties>
-<!--    <build>-->
-    <!--        <testResources>-->
-    <!--            <testResource>-->
-    <!--                <directory>src/test/resources</directory>-->
-    <!--                <excludes>-->
-    <!--                    <exclude>**/*.txt</exclude> -->
-    <!--                </excludes>-->
-    <!--            </testResource>-->
-    <!--        </testResources>-->
-    <!--    </build>-->
 
     <dependencies>
         <dependency>
